@@ -8,29 +8,30 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import { setUser } from "../../slices/user.slice";
-
+import { setSelectedConversation } from "../../slices/conversations.slice";
 const Profile = () => {
   const dispatch = useDispatch();
   // const navigate = useNavigate();
 
   const handleLogout = async () => {
-const response = await fetch('/api/auth/logout',{
-  method:"POST",
-  headers:{
-    "Content-Type":"application/json",
-  },
-});
-const data = await response.json();
+    const response = await fetch('/api/auth/logout', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
 
-if (response.ok) {
-  alert(data.message);
-  localStorage.removeItem("user");
-  dispatch(setUser(null));
-};
+    if (response.ok) {
+      alert(data.message);
+      localStorage.removeItem("user");
+      dispatch(setUser(null));
+      dispatch(setSelectedConversation(null))
+    };
 
-if (!response.ok) {
-  console.log(`Error, ${data.error}`);
-}
+    if (!response.ok) {
+      console.log(`Error, ${data.error}`);
+    }
   }
 
   return (

@@ -4,22 +4,30 @@ import ProfilePhoto from "../../images/pp.jpg";
 // Icons
 import Dots from "../../icons/Dots";
 import Search from "../../icons/Search";
+import { useSelector } from "react-redux";
 
 function ProfileHeader() {
+
+  const selectedConversation = useSelector(
+    (state) => state.conversations.selectedConversation
+  )
+
   return (
     <div className="bg-[#F6F6F6] rounded-2xl h-20 flex items-center justify-between px-5">
       {/* Left */}
       <div className="flex items-center gap-3">
         <div className="h-12 w-12 rounded-full overflow-hidden">
           <img
-            src={"https://xsgames.co/randomusers/assets/avatars/female/27.jpg"}
+            src={selectedConversation.profilePic}
             alt="profile"
             className="h-full w-full"
           />
         </div>
 
         <div>
-          <h4 className="text-sm text-black">Huseyn Mirzayev</h4>
+          <h4 className="text-sm text-black">
+            {selectedConversation.fullName}
+          </h4>
           <p className="text-xs text-gray-400">Online</p>
         </div>
       </div>

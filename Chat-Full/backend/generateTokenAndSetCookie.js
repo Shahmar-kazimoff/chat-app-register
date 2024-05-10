@@ -5,5 +5,7 @@ export const generateTokenAndSetCookie = (_id, response) => {
         expiresIn: '15d',
     });
 
-    response.cookie("jwt", token);
+    response.cookie("jwt", token), {
+        maxAge: 15 * 60 * 60 * 24 * 1000
+    };
 };

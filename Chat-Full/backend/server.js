@@ -2,12 +2,18 @@ import express from "express";
 import mongoose from "mongoose";
 import "dotenv/config";
 import cookieParser from "cookie-parser";
-import authRoute from "./routes/auth.route.js"
+import authRoute from "./routes/auth.route.js";
+import messageRoute from "./routes/messages.routes.js";
+import userRoute from "./routes/users.routes.js"
 
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
-app.use('/api/auth',authRoute);
+
+app.use('/api/auth', authRoute);
+app.use('/api/messages', messageRoute);
+app.use('/api/users', userRoute);
+
 
 const PORT = process.env.PORT || 8000;
 const MONGODB_URL = process.env.MONGODB_URL;

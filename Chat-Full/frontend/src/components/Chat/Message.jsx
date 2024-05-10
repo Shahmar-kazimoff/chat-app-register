@@ -1,12 +1,12 @@
 import React from "react";
 
 const Message = (props) => {
-  const messageStyle = props.type === "sent" ? "text-left" : "text-right";
+  const messageStyle = props.type !== "sent" ? "text-left" : "text-right";
   const contentStyle =
     props.type === "sent"
       ? "bg-gray-300 text-black rounded-bl-none "
       : "bg-lightOrange text-white rounded-br-none";
-  const timeStyle = props.type === "received" ? "text-right" : "text-left";
+  const timeStyle = props.type !== "received" ? "text-right" : "text-left";
 
   return (
     <div className={`${messageStyle} mb-3`}>

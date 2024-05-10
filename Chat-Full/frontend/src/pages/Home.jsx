@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 const Home = () => {
 
   const user = useSelector((state) => state.user)
-  console.log(user);
   return (
     <div className="h-[600px] w-full flex gap-2">
       <Sidebar />
